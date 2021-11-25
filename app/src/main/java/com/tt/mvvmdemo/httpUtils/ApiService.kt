@@ -1,10 +1,50 @@
 package com.tt.mvvmdemo.httpUtils
 
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
+
+
+    /**
+     * 获取轮播图
+     */
+    @GET("banner/json")
+    suspend fun getBanners(): ResponseData<List<Banner>>
+
+    /**
+     * 获取首页置顶文章列表
+     * http://www.wanandroid.com/article/top/json
+     */
+    @GET("article/top/json")
+    suspend fun getTopArticles(): ResponseData<MutableList<Article>>
+
+    /**
+     * 获取文章列表
+     * http://www.wanandroid.com/article/list/0/json
+     * @param pageNum
+     */
+    @GET("article/list/{pageNum}/json")
+    suspend fun getArticles(@Path("pageNum") pageNum: Int): ResponseData<ArticleResponseBody>
+
+    /**
+     * 搜索热词
+     * http://www.wanandroid.com/hotkey/json
+     */
+    @GET("hotkey/json")
+    suspend fun getHotSearchData(): ResponseData<MutableList<HotSearchBean>>
+
+    /**
+     * 搜索
+     * http://www.wanandroid.com/article/query/0/json
+     * @param page
+     * @param key
+     */
+    @POST("article/query/{page}/json")
+    @FormUrlEncoded
+    suspend fun queryBySearchKey(
+        @Path("page") page: Int,
+        @Field("k") key: String
+    ): ResponseData<ArticleResponseBody>
 
 
     /**
