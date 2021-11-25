@@ -45,6 +45,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
+    //lifecycle-viewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-rc01"
 
     //腾讯bugly
     implementation 'com.tencent.bugly:crashreport:3.4.4'
@@ -55,5 +57,19 @@ dependencies {
     //BottomNavigationB底部导航栏
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.2.0'
 
+
+    //协程
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
+    //Android智能下拉刷新框架-SmartRefreshLayout(最新版本有问题,下载不下来)
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.0'      //核心必须依赖
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.0'    //经典刷新头
+    implementation 'com.scwang.smart:refresh-header-radar:2.0.0'       //雷达刷新头
+    implementation 'com.scwang.smart:refresh-header-falsify:2.0.0'     //虚拟刷新头
+    implementation 'com.scwang.smart:refresh-header-material:2.0.0'    //谷歌刷新头
+    implementation 'com.scwang.smart:refresh-header-two-level:2.0.0'   //二级刷新头
+    implementation 'com.scwang.smart:refresh-footer-ball:2.0.0'        //球脉冲加载
+    implementation 'com.scwang.smart:refresh-footer-classics:2.0.0'    //经典加载
 
 }

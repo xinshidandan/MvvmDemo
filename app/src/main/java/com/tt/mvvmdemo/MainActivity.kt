@@ -90,7 +90,7 @@ class MainActivity : BaseActivity() {
                 .setPositiveButton("去设置") { _, _ ->
                     mPermissionDialog.dismiss()
                     //跳转到应用设置
-                    val packageURI = Uri.parse("package${BuildConfig.APPLICATION_ID}")
+                    val packageURI = Uri.parse("package:${BuildConfig.APPLICATION_ID}")
                     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI)
                     startActivity(intent)
                     this.finish()
@@ -104,11 +104,11 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
-        TODO("Not yet implemented")
+
     }
 
     override fun startHttp() {
-        TODO("Not yet implemented")
+
     }
 
 

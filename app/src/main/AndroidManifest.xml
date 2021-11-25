@@ -13,7 +13,7 @@
         android:theme="@style/BaseAppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:screenOrientation="behind"
             android:theme="@style/BaseAppTheme.Splash">
             <intent-filter>

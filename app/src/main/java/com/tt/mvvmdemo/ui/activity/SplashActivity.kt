@@ -1,4 +1,4 @@
-package com.tt.mvvmdemo.ui
+package com.tt.mvvmdemo.ui.activity
 
 import android.content.Intent
 import com.tt.mvvmdemo.MainActivity
