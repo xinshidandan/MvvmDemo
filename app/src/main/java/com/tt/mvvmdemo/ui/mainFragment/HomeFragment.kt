@@ -13,12 +13,14 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tt.mvvmdemo.R
 import com.tt.mvvmdemo.base.BaseApplication
 import com.tt.mvvmdemo.base.BaseViewModelFragment
+import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.httpUtils.Article
 import com.tt.mvvmdemo.httpUtils.Banner
 import com.tt.mvvmdemo.mvvm.mainViewModel.HomeViewModel
 import com.tt.mvvmdemo.ui.adapter.HomeAdapter
 import com.tt.mvvmdemo.ui.adapter.ImageAdapter
 import com.tt.mvvmdemo.utils.DensityUtil
+import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
 import com.tt.mvvmdemo.utils.NetWorkUtil
 import com.tt.mvvmdemo.utils.SettingUtil
 import com.youth.banner.indicator.CircleIndicator
@@ -181,7 +183,7 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
                 val res = data[position]
                 when (view.id) {
                     R.id.iv_like -> {
-//                        if (!mmkv.decodeBool(Constant.IS_LOGIN, false)) {
+//                        if (!mmkv?.decodeBool(Constant.IS_LOGIN, false)!!) {
 //                            startActivity(Intent(activity, LoginActivity::class.java))
 //                            return@setOnItemChildClickListener
 //                        }
