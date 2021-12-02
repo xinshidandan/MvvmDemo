@@ -138,4 +138,37 @@ interface ApiService {
         @Path("id") id: Int,
         @Field("originId") originId: Int = -1
     ): ResponseData<Any>
+
+    /**
+     * 获取知识体系
+     * http://www.wanandroid.com/tree/json
+     */
+    @GET("tree/json")
+    suspend fun getKnowledgeTree(): ResponseData<List<KnowledgeTreeBody>>
+
+    /**
+     * 知识体系下的文章
+     * http://www.wanandroid.com/article/list/0/json?cid=168
+     * @param page
+     * @param cid
+     */
+    @GET("article/list/{page}/json")
+    suspend fun getKnowledgeList(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): ResponseData<ArticleResponseBody>
+
+    /**
+     * 导航数据
+     * http://www.wanandroid.com/navi/json
+     */
+    @GET("navi/json")
+    suspend fun getNavigationList(): ResponseData<List<NavigationBean>>
+
+    /**
+     * 获取公众号列表
+     * http://wanandroid.com/wxarticle/chapters/json
+     */
+    @GET("/wxarticle/chapters/json")
+    suspend fun getWeiXin(): ResponseData<MutableList<WXChapterBean>>
 }

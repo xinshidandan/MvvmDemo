@@ -26,6 +26,7 @@ import com.tt.mvvmdemo.utils.SettingUtil
 import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_network_error_tip.*
+import java.lang.Exception
 
 class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
 
@@ -203,6 +204,15 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
     }
 
     override fun startHttp() {
+        showLoading()
+        isRefresh = true
+        initArticles(0)
+        initBanner()
+    }
+
+    override fun requestError(it: Exception?) {
+        super.requestError(it)
+        homeAdapter.loadMoreModule.loadMoreFail()
     }
 
 }

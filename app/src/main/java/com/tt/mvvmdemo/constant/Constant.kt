@@ -5,4 +5,5 @@ object Constant {
     const val HAS_NETWORK_KEY = "has_network"
     const val TOOLBAR_HEIGHT = 44
     const val IS_LOGIN = "isLogin"
+    const val CONTENT_CID_KEY = "cid"
 }

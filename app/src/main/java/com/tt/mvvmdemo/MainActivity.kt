@@ -13,6 +13,8 @@ import androidx.viewpager.widget.ViewPager
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.tt.mvvmdemo.base.BaseActivity
 import com.tt.mvvmdemo.receiver.NetworkChangeReceiver
+import com.tt.mvvmdemo.ui.mainFragment.HomeFragment
+import com.tt.mvvmdemo.ui.mainFragment.SystemFragment
 import com.tt.mvvmdemo.utils.PermissionUtils
 
 class MainActivity : BaseActivity() {
@@ -50,6 +52,9 @@ class MainActivity : BaseActivity() {
     /**
      * newInstance并不能保证fragment是同一个，可能会重新new一个，所以这里设置一下
      */
+    private val homeFragment = HomeFragment.newInstance()
+    private val systemFragment = SystemFragment.newInstance()
+
 
 
     override fun getLayoutId(): Int = R.layout.activity_main
