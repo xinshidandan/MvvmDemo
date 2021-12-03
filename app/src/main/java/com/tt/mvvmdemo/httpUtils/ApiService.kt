@@ -171,4 +171,18 @@ interface ApiService {
      */
     @GET("/wxarticle/chapters/json")
     suspend fun getWeiXin(): ResponseData<MutableList<WXChapterBean>>
+
+    /**
+     * 问答
+     * pageId， 拼接在连接上，例如上面的1
+     */
+    @GET("wenda/list/{page}/json")
+    suspend fun getQuestionList(@Path("page") page: Int): ResponseData<ArticleListBean>
+
+    /**
+     * 获取个人信息
+     * https://www.wanandroid.com/lg/coin/userinfo/json
+     */
+    @GET("lg/coin/userinfo/json")
+    suspend fun getUserInfo(): ResponseData<UserInfoBody>
 }

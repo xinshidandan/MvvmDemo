@@ -2,6 +2,7 @@ package com.tt.mvvmdemo.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tt.mvvmdemo.R
@@ -9,6 +10,9 @@ import com.tt.mvvmdemo.base.BaseViewModelFragment
 import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.viewModel.KnowListViewModel
 import com.tt.mvvmdemo.ui.adapter.KnowledgeListAdapter
+import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
+import kotlinx.android.synthetic.main.know_list_fragment.*
+import java.lang.Exception
 
 class KnowListFragment : BaseViewModelFragment<KnowListViewModel>() {
 
@@ -37,10 +41,61 @@ class KnowListFragment : BaseViewModelFragment<KnowListViewModel>() {
     }
 
     override fun initView(view: View) {
+        refreshLayout = swipeRefreshLayout_know_list
+        refreshLayout.setRefreshHeader(ch_header_know_list)
+        refreshLayout.setOnRefreshListener {
+            knowLedgeListAdapter.loadMoreModule.isEnableLoadMore = false
+            startHttp()
+        }
+        recyclerView_know_list.run {
+            layoutManager = linearLayoutManager
+            adapter = knowLedgeListAdapter
+            itemAnimator = DefaultItemAnimator()
+        }
+        knowLedgeListAdapter.run {
+            recyclerView = recyclerView_know_list
+            setOnItemClickListener { adapter, view, position ->
+                if (data.size == 0) return@setOnItemClickListener
+                val res = data[position]
+                when (view.id) {
+                    R.id.iv_like -> {
+                        if (!mmkv!!.decodeBool(Constant.IS_LOGIN, false)) {
 
+                            return@setOnItemClickListener
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override fun startHttp() {
+        showLoading()
+        isRefresh = true
+        initKnowledgeList(0)
+    }
 
+    private fun initKnowledgeList(page: Int) {
+        viewModel.getKnowledgeList(page, cid).observe(activity!!, {
+            it.datas.let { Article ->
+                hideLoading()
+                knowLedgeListAdapter.run {
+                    if (isRefresh) {
+                        refreshLayout.finishRefresh()
+                        setList(Article)
+                        recyclerView.scrollToPosition(0)
+                    } else addData(Article)
+                    if (data.size == 0) setEmptyView(R.layout.fragment_empty_layout)
+                    else if (hasEmptyView()) removeEmptyView()
+                    if (it.over) loadMoreModule.loadMoreEnd(isRefresh)
+                    else loadMoreModule.loadMoreComplete()
+                }
+            }
+        })
+    }
+
+    override fun requestError(it: Exception?) {
+        super.requestError(it)
+        knowLedgeListAdapter.loadMoreModule.loadMoreFail()
     }
 }

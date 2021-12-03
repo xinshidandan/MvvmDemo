@@ -111,20 +111,24 @@ abstract class BaseFragment : Fragment() {
             )
             mainView.toolbar_left_image_back.setOnClickListener { activity?.onBackPressed() }
         }
-    ){
+    ) {
         mainView.toolbar_title?.text = title
         mainView.toolbar_title?.isSelected = true
         mainView.toolbar_title?.setOnClickListener { startHttp() }
         if (!DensityUtil.isSmallWindow(activity!!)) {
             val param = toolbar?.layoutParams
-            param?.height = StatusBarUtils.getStatusBarHeight(activity!!) + DensityUtil.dip2px(activity!!, Constant.TOOLBAR_HEIGHT)
+            param?.height = StatusBarUtils.getStatusBarHeight(activity!!) + DensityUtil.dip2px(
+                activity!!,
+                Constant.TOOLBAR_HEIGHT
+            )
+            toolbar?.layoutParams = param
         }
         isBack?.invoke()
-        when(subTitle) {
+        when (subTitle) {
             is String -> {
-               mainView.toolbar_subtitle_image?.visibility = View.GONE
-               mainView.toolbar_subtitle?.visibility = View.VISIBLE
-               mainView.toolbar_subtitle?.text = subTitle
+                mainView.toolbar_subtitle_image?.visibility = View.GONE
+                mainView.toolbar_subtitle?.visibility = View.VISIBLE
+                mainView.toolbar_subtitle?.text = subTitle
             }
             is Int -> {
                 mainView.toolbar_subtitle?.visibility = View.GONE

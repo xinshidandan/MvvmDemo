@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item>
         <shape>
             <size
-                android:width="360dp"
-                android:height="360dp" />
+                tools:height="360dp"
+                tools:width="360dp" />
             <solid android:color="@color/colorPrimaryDark" />
         </shape>
     </item>
@@ -15,4 +16,5 @@
             android:gravity="center"
             android:src="@drawable/big_logo" />
     </item>
+
 </layer-list>

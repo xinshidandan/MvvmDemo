@@ -5,19 +5,21 @@
     <!-- rectangle表示为矩形 -->
 
     <!-- 填充的颜色 -->
-    <solid android:color="@color/Grey200" />
+    <solid android:color="@color/colorPrimaryDark" />
 
     <!-- 边框的颜色和粗细 -->
     <stroke
         android:width="0.1dp"
-        android:color="@color/Grey200" />
+        android:color="@color/white"
+        />
 
     <!-- android:radius 圆角的半径 -->
     <corners
-        android:bottomLeftRadius="20dp"
-        android:bottomRightRadius="20dp"
         android:radius="2dp"
-        android:topLeftRadius="20dp"
-        android:topRightRadius="20dp" />
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp"
+        android:bottomRightRadius="5dp"
+        android:bottomLeftRadius="5dp"
+        />
 
 </shape>

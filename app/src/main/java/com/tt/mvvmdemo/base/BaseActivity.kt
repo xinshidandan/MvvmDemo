@@ -147,9 +147,9 @@ abstract class BaseActivity : AppCompatActivity() {
         toolbar_search_title?.isSelected = true
         //小窗模式不计算状态栏高度
         if(!DensityUtil.isSmallWindow(this)) {
-            val layoutParam = toolbar?.layoutParams
+            val layoutParam = toolbar_search?.layoutParams
             layoutParam?.height = getStatusBarHeight(this) + DensityUtil.dip2px(this, Constant.TOOLBAR_HEIGHT)
-            toolbar?.layoutParams = layoutParam
+            toolbar_search?.layoutParams = layoutParam
         }
         isBack?.invoke()
         when(subTitle) {
