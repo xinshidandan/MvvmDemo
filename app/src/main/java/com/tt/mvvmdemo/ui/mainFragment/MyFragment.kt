@@ -6,7 +6,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tt.mvvmdemo.R
 import com.tt.mvvmdemo.base.BaseViewModelFragment
 import com.tt.mvvmdemo.constant.Constant
-import com.tt.mvvmdemo.mvvm.viewModel.MyViewModel
+import com.tt.mvvmdemo.mvvm.mainViewModel.MyViewModel
 import com.tt.mvvmdemo.ui.view.BottomDialog
 import com.tt.mvvmdemo.ui.view.MyDialog
 import com.tt.mvvmdemo.utils.ImageLoader
