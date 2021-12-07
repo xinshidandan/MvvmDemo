@@ -23,7 +23,9 @@ import com.tt.mvvmdemo.ui.login.LoginActivity
 import com.tt.mvvmdemo.utils.DensityUtil
 import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
 import com.tt.mvvmdemo.utils.NetWorkUtil
+import com.tt.mvvmdemo.utils.RvAnimUtils
 import com.tt.mvvmdemo.utils.SettingUtil
+import com.tt.mvvmdemo.webView.WebViewActivity
 import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_network_error_tip.*
@@ -63,7 +65,7 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
             imgAdapter = ImageAdapter(context ?: BaseApplication.mContext, it)
             bannerView?.run {
                 setAdapter(imgAdapter, true)
-                setOnBannerListener{data, position ->
+                setOnBannerListener { data, position ->
                     data as Banner
 
                 }
@@ -142,7 +144,7 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
         if (NetWorkUtil.isNetworkConnected(BaseApplication.mContext)) mTipView.visibility =
             View.GONE
         //初始化网络状态的LiveData
-//        initNetError()
+        initNetError()
 
         refreshLayout = swipeRefreshLayout1
         refreshLayout.setRefreshHeader(ch_header)
@@ -169,7 +171,7 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
             setOnItemClickListener { adapter, view, position ->
                 if (data.size != 0) {
                     val data = data[position]
-//                    WebViewActivity.start(activity, data.id, data.title, data.link)
+                    WebViewActivity.start(activity, data.id, data.title, data.link)
                 }
             }
             addHeaderView(bannerView as View)
@@ -198,10 +200,21 @@ class HomeFragment : BaseViewModelFragment<HomeViewModel>() {
                 }
             }
         }
-//        RvAnimUtils.setAnim(homeAdapter, SettingUtil.getListAnimal())
-//        LiveEventBus.get("rv_anim").observe(this, {
-//            RvAnimUtils.setAnim(homeAdapter, it)
-//        })
+        RvAnimUtils.setAnim(homeAdapter, SettingUtil.getListAnimal()!!)
+        LiveEventBus.get("rv_anim").observe(this, {
+            RvAnimUtils.setAnim(homeAdapter, it)
+        })
+    }
+
+    private fun initNetError() {
+        LiveEventBus.get("isConnected", Boolean::class.java).observe(this, {
+            if (it) {
+                startHttp()
+                mTipView.visibility = View.GONE
+            } else {
+                mTipView.visibility = View.VISIBLE
+            }
+        })
     }
 
     override fun startHttp() {

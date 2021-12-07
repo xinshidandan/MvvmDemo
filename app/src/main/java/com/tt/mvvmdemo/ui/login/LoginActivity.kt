@@ -1,5 +1,6 @@
 package com.tt.mvvmdemo.ui.login
 
+import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.jeremyliao.liveeventbus.LiveEventBus
@@ -18,7 +19,7 @@ class LoginActivity : BaseViewModelActivity<LoginViewModel>() {
     override fun initData() {
         setTop("登录")
         btn_login.setOnClickListener { login() }
-        tv_register.setOnClickListener { }
+        tv_register.setOnClickListener { startActivity(Intent(this, RegisterActivity::class.java)) }
     }
 
     override fun initView() {

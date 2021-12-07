@@ -38,6 +38,8 @@
             android:name=".MainActivity"
             android:screenOrientation="behind" />
         <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.login.RegisterActivity" />
+        <activity android:name=".webView.WebViewActivity" />
     </application>
 
 </manifest>
