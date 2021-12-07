@@ -185,4 +185,22 @@ interface ApiService {
      */
     @GET("lg/coin/userinfo/json")
     suspend fun getUserInfo(): ResponseData<UserInfoBody>
+
+    /**
+     * 获取个人积分列表，需登录后访问
+     * https://www.wanandroid.com//lg/coin/list/1/json
+     * @param page 页码 从1开始
+     */
+    @GET("/lg/coin/list/{page}/json")
+    suspend fun getUserScoreList(@Path("page") page: Int): ResponseData<BaseListResponseBody<UserScoreBean>>
+
+    /**
+     * 获取积分排行榜
+     * https://www.wanandroid.com/coin/rank/1/json
+     * @param page 页码 从1开始
+     */
+    @GET("/coin/rank/{page}/json")
+    suspend fun getRankList(@Path("page") page: Int): ResponseData<BaseListResponseBody<CoinInfoBean>>
+
+
 }

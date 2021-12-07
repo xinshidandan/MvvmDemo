@@ -175,10 +175,10 @@ class MainActivity : BaseActivity(), BottomNavigationBar.OnTabSelectedListener {
                 myBadge.hide()
                 return@observe
             }
-            if (it && MyMMKV.mmkv?.encode(
+            if (it && MyMMKV.mmkv.encode(
                     Constant.IS_LOGIN,
                     true
-                )!!
+                )
             ) myBadge.show() else myBadge.hide()
         })
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED)

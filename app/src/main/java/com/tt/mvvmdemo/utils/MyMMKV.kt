@@ -13,7 +13,7 @@ class MyMMKV {
         /**
          * 初始化mmkv
          */
-        val mmkv: MMKV?
+        val mmkv: MMKV
             get() = MMKV.mmkvWithID(fileName)
 
 

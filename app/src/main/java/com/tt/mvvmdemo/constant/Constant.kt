@@ -13,6 +13,7 @@ object Constant {
     const val CONTENT_TITLE_KEY = "title"
     const val CONTENT_URL_KEY = "url"
     const val CONTENT_SHARE_TYPE = "text/plain"
+    const val CONTENT_DATA_KEY = "content_data"
 
     //拍照
     const val IMAGE_CAPTURE = 1

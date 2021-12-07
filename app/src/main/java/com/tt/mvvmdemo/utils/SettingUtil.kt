@@ -58,7 +58,7 @@ object SettingUtil {
     /**
      * 获取列表动画
      */
-    fun getListAnimal() = setting?.decodeString("list_animal", "无")
+    fun getListAnimal() = setting.decodeString("list_animal", "无")
     fun setListAnimal(animal: String) = setting?.encode("list_animal", animal)
 
 
