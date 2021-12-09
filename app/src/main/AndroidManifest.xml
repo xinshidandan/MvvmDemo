@@ -40,6 +40,10 @@
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".webView.WebViewActivity" />
+        <activity android:name=".ui.activity.my.MyScoreActivity" />
+        <activity android:name=".ui.activity.share.ShareActivity" />
+        <activity android:name=".ui.activity.my.TodoActivity" />
+        <activity android:name=".ui.activity.my.AddTodoActivity" />
     </application>
 
 </manifest>

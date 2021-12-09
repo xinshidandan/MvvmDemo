@@ -8,12 +8,17 @@ import com.tt.mvvmdemo.R
 import com.tt.mvvmdemo.base.BaseViewModelFragment
 import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.mainViewModel.MyViewModel
+import com.tt.mvvmdemo.ui.activity.collect.MyCollectActivity
+import com.tt.mvvmdemo.ui.activity.my.MyScoreActivity
+import com.tt.mvvmdemo.ui.activity.share.ShareActivity
 import com.tt.mvvmdemo.ui.login.LoginActivity
 import com.tt.mvvmdemo.ui.view.BottomDialog
 import com.tt.mvvmdemo.ui.view.MyDialog
 import com.tt.mvvmdemo.utils.ImageLoader
 import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
 import com.tt.mvvmdemo.utils.SettingUtil
+import com.tt.mvvmdemo.utils.captureImage
+import com.tt.mvvmdemo.utils.selectImage
 import kotlinx.android.synthetic.main.my_fragment.*
 import kotlinx.android.synthetic.main.my_fragment.view.*
 import java.io.File
@@ -136,13 +141,68 @@ class MyFragment : BaseViewModelFragment<MyViewModel>(), View.OnClickListener {
                 }
             }
             ll_score -> {
-                if (mmkv.decodeBool(Constant.IS_LOGIN, false)){
-//                    startActivity(Intent(activity, ))
+                if (mmkv.decodeBool(Constant.IS_LOGIN, false)) {
+                    startActivity(Intent(activity, MyScoreActivity::class.java))
                 } else {
                     startActivity(Intent(activity, LoginActivity::class.java))
                 }
             }
+            ll_my_collect -> {
+                if (mmkv.decodeBool(Constant.IS_LOGIN, false)) {
+                    startActivity(Intent(activity, MyCollectActivity::class.java))
+                } else {
+                    startActivity(Intent(activity, LoginActivity::class.java))
+                }
+            }
+            ll_my_share -> {
+                if (mmkv.decodeBool(Constant.IS_LOGIN, false)) {
+                    startActivity(Intent(activity, ShareActivity::class.java))
+                } else {
+                    startActivity(Intent(activity, LoginActivity::class.java))
+                }
+            }
+            iv_todo -> {
+                if (mmkv.decodeBool(Constant.IS_LOGIN, false)) {
+
+                } else {
+                    startActivity(Intent(activity, LoginActivity::class.java))
+                }
+            }
+            head_pic -> showPhotoDialog(headType)
+            iv_bg_img -> showPhotoDialog(bgType)
+            ll_my_logout -> {
+
+            }
         }
+    }
+
+    private fun showPhotoDialog(imgType: String) {
+        type = imgType
+        if (this::bottomDialog.isInitialized) bottomDialog.show()
+        else {
+            bottomDialog = BottomDialog(activity!!, {
+                when (it.id) {
+                    R.id.tv_take_photo -> {
+                        if (this::bottomDialog.isInitialized && bottomDialog.isShowing) {
+                            bottomDialog.dismiss()
+                            captureImage(activity!!)
+                        }
+                    }
+                    R.id.tv_from_album -> {
+                        if (this::bottomDialog.isInitialized && bottomDialog.isShowing) {
+                            bottomDialog.dismiss()
+                            selectImage(activity!!)
+                        }
+                    }
+                    R.id.tv_cancle -> {
+                        if (this::bottomDialog.isInitialized && bottomDialog.isShowing) {
+                            bottomDialog.dismiss()
+                        }
+                    }
+                }
+            })
+        }
+        bottomDialog.show()
     }
 
     override fun onDestroy() {

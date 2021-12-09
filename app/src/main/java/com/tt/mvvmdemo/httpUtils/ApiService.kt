@@ -202,5 +202,67 @@ interface ApiService {
     @GET("/coin/rank/{page}/json")
     suspend fun getRankList(@Path("page") page: Int): ResponseData<BaseListResponseBody<CoinInfoBean>>
 
+    /**
+     * 获取收藏列表
+     * http://www.wanandroid.com/lg/collect/list/0/json
+     * @param page
+     */
+    @GET("lg/collect/list/{page}/json")
+    suspend fun getCollectList(@Path("page") page: Int): ResponseData<BaseListResponseBody<CollectionArticle>>
+
+    /**
+     * 分享文章
+     * https://www.wanandroid.com/lg/user_article/add/json
+     */
+    @FormUrlEncoded
+    @POST("lg/user_article/add/json")
+    suspend fun shareArticle(@FieldMap map: MutableMap<String, Any>): ResponseData<Any>
+
+    /**
+     * 自己的分享的文章列表
+     * https://wanandroid.com/user/lg/private_articles/1/json
+     */
+    @GET("user/lg/private_articles/{page}/json")
+    suspend fun getShareList(@Path("page") page: Int): ResponseData<ShareResponseBody>
+
+    /**
+     * 删除自己分享的文章
+     * https://wanandroid.com/lg/user_article/delete/9475/json
+     */
+    @POST("lg/user_article/delete/{id}/json")
+    suspend fun deleteShareArticle(@Path("id") id: Int): ResponseData<Any>
+
+    /**
+     * 仅更新完成状态todo
+     * http://www.wanandroid.com/lg/todo/done/80/json
+     */
+    @POST("/lg/todo/done/{id}/json")
+    @FormUrlEncoded
+    suspend fun updateTodoById(@Path("id") id: Int, @Field("status") status: Int): ResponseData<Any>
+
+    /**
+     * 删除一条todo
+     * http://www.wanandroid.com/lg/todo/delete/83/json
+     */
+    @POST("lg/todo/delete/{id}/json")
+    suspend fun deleteTodoById(@Path("id") id: Int): ResponseData<Any>
+
+    /**
+     * 新增一条todo
+     * http://www.wanandroid.com/lg/todo/add/json
+     */
+    @POST("lg/todo/add/json")
+    @FormUrlEncoded
+    suspend fun addTodo(@FieldMap map: MutableMap<String, Any>): ResponseData<Any>
+
+    /**
+     * 更新一条todo内容
+     * http://www.wanandroid.com/lg/todo/update/83/json
+     */
+    suspend fun updateTodo(
+        @Path("id") id: Int,
+        @FieldMap map: MutableMap<String, Any>
+    ): ResponseData<Any>
+
 
 }
