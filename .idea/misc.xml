@@ -5,25 +5,39 @@
       <map>
         <entry key="app/src/main/res/drawable/alert_dialog_background.xml" value="0.29074074074074074" />
         <entry key="app/src/main/res/drawable/oval_msg.xml" value="0.29074074074074074" />
+        <entry key="app/src/main/res/layout/activity_about.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_add_todo.xml" value="0.2477355072463768" />
+        <entry key="app/src/main/res/layout/activity_group.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_knowldege.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/activity_later_read.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16261398176291794" />
         <entry key="app/src/main/res/layout/activity_my_collect.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/activity_my_score.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/activity_my_share.xml" value="0.22146739130434784" />
+        <entry key="app/src/main/res/layout/activity_rank.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_share.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/activity_system.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_todo.xml" value="0.2477355072463768" />
         <entry key="app/src/main/res/layout/activity_web_view.xml" value="0.2269021739130435" />
         <entry key="app/src/main/res/layout/bottom_dialog_view.xml" value="0.23777173913043478" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.16261398176291794" />
         <entry key="app/src/main/res/layout/item_collect_list.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/item_knowledge_tree_list.xml" value="0.16261398176291794" />
+        <entry key="app/src/main/res/layout/item_read_list.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/item_score_record.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/item_share_list.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/item_todo_list.xml" value="0.2477355072463768" />
         <entry key="app/src/main/res/layout/layout_alert_dialog.xml" value="0.23777173913043478" />
         <entry key="app/src/main/res/layout/my_fragment.xml" value="0.16261398176291794" />
+        <entry key="app/src/main/res/layout/navigation_fragment.xml" value="0.16261398176291794" />
         <entry key="app/src/main/res/layout/question_fragment.xml" value="0.16261398176291794" />
+        <entry key="app/src/main/res/layout/rank_list_item.xml" value="0.22146739130434784" />
+        <entry key="app/src/main/res/layout/rv_anim_dialog_view.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/toolbar_layout.xml" value="0.16261398176291794" />
+        <entry key="app/src/main/res/layout/view_app_default_page.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/view_popupwindow.xml" value="0.2269021739130435" />
         <entry key="app/src/main/res/layout/wei_xin_fragment.xml" value="0.16261398176291794" />
       </map>

@@ -1,16 +1,22 @@
 package com.tt.mvvmdemo.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tt.mvvmdemo.R
 import com.tt.mvvmdemo.base.BaseViewModelFragment
 import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.viewModel.KnowListViewModel
 import com.tt.mvvmdemo.ui.adapter.KnowledgeListAdapter
+import com.tt.mvvmdemo.ui.login.LoginActivity
 import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
+import com.tt.mvvmdemo.utils.RvAnimUtils
+import com.tt.mvvmdemo.utils.SettingUtil
+import com.tt.mvvmdemo.webView.WebViewActivity
 import kotlinx.android.synthetic.main.know_list_fragment.*
 import java.lang.Exception
 
@@ -55,18 +61,41 @@ class KnowListFragment : BaseViewModelFragment<KnowListViewModel>() {
         knowLedgeListAdapter.run {
             recyclerView = recyclerView_know_list
             setOnItemClickListener { adapter, view, position ->
-                if (data.size == 0) return@setOnItemClickListener
+                if (data.size != 0) {
+                    val data = data[position]
+                    WebViewActivity.start(activity, data.id, data.title, data.link)
+                }
+            }
+            loadMoreModule.setOnLoadMoreListener {
+                isRefresh = false
+                refreshLayout.finishRefresh()
+                val page = knowLedgeListAdapter.data.size / pageSize
+                initKnowledgeList(page)
+            }
+            addChildClickViewIds(R.id.iv_like)
+            setOnItemChildClickListener { adapter, view, position ->
+                if (data.size == 0) return@setOnItemChildClickListener
                 val res = data[position]
                 when (view.id) {
                     R.id.iv_like -> {
-                        if (!mmkv!!.decodeBool(Constant.IS_LOGIN, false)) {
-
-                            return@setOnItemClickListener
+                        if (!mmkv.decodeBool(Constant.IS_LOGIN, false)) {
+                            startActivity(Intent(activity, LoginActivity::class.java))
+                            return@setOnItemChildClickListener
                         }
+                        val collect = res.collect
+                        res.collect = !collect
+                        setData(position, res)
+                        if (collect) viewModel.cancelCollectArticle(res.id).observe(activity!!, {})
+                        else viewModel.addCollectArticle(res.id).observe(activity!!, {})
                     }
                 }
             }
         }
+        RvAnimUtils.setAnim(knowLedgeListAdapter, SettingUtil.getListAnimal())
+        LiveEventBus.get("rv_anim").observe(this, {
+            RvAnimUtils.setAnim(knowLedgeListAdapter, it)
+        })
+
     }
 
     override fun startHttp() {

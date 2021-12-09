@@ -31,6 +31,8 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.tt.mvvmdemo.base.BaseActivity
 import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.receiver.NetworkChangeReceiver
+import com.tt.mvvmdemo.ui.activity.common.SearchActivity
+import com.tt.mvvmdemo.ui.activity.group.GroupActivity
 import com.tt.mvvmdemo.ui.mainFragment.*
 import com.tt.mvvmdemo.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -92,7 +94,12 @@ class MainActivity : BaseActivity(), BottomNavigationBar.OnTabSelectedListener {
         setTop(SettingUtil.getDefaultPage(), R.drawable.search, {})
         toolbar_title.setTextColor(ContextCompat.getColor(this, R.color.white))
         toolbar_left_image_back.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.group))
-
+        toolbar_left_image_back.setOnClickListener {
+            startActivity(Intent(this, GroupActivity::class.java))
+        }
+        toolbar_subtitle_image.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+        }
 
     }
     override fun initData() {

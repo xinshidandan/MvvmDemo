@@ -1,5 +1,6 @@
 package com.tt.mvvmdemo.ui.activity.my
 
+import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -28,7 +29,9 @@ class MyScoreActivity : BaseViewModelActivity<MyScoreActivityViewModel>() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun initData() {
         setTop("我的积分", R.drawable.paihangbang)
-        toolbar_subtitle_image.setOnClickListener { }
+        toolbar_subtitle_image.setOnClickListener {
+            startActivity(Intent(this, RankActivity::class.java))
+        }
         wave_score?.run {
             setBorder(0, ContextCompat.getColor(this@MyScoreActivity, R.color.colorPrimary))
         }

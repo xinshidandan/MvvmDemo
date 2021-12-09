@@ -264,5 +264,11 @@ interface ApiService {
         @FieldMap map: MutableMap<String, Any>
     ): ResponseData<Any>
 
+    /**
+     * 广场列表数据
+     * https://wanandroid.com/user_article/list/0/json
+     */
+    suspend fun getGroupList(@Path("page") page: Int): ResponseData<ArticleResponseBody>
+
 
 }

@@ -53,6 +53,10 @@ class WebViewActivity : BaseViewModelActivity<RoomViewModel>() {
                 context?.startActivity(this, bundle)
             }
         }
+
+        fun start(context: Context?, url: String) {
+            start(context, -1, "", url)
+        }
     }
 
 

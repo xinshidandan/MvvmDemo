@@ -9,16 +9,13 @@ import com.tt.mvvmdemo.base.BaseViewModelFragment
 import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.mainViewModel.MyViewModel
 import com.tt.mvvmdemo.ui.activity.collect.MyCollectActivity
-import com.tt.mvvmdemo.ui.activity.my.MyScoreActivity
+import com.tt.mvvmdemo.ui.activity.my.*
 import com.tt.mvvmdemo.ui.activity.share.ShareActivity
 import com.tt.mvvmdemo.ui.login.LoginActivity
 import com.tt.mvvmdemo.ui.view.BottomDialog
 import com.tt.mvvmdemo.ui.view.MyDialog
-import com.tt.mvvmdemo.utils.ImageLoader
+import com.tt.mvvmdemo.utils.*
 import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
-import com.tt.mvvmdemo.utils.SettingUtil
-import com.tt.mvvmdemo.utils.captureImage
-import com.tt.mvvmdemo.utils.selectImage
 import kotlinx.android.synthetic.main.my_fragment.*
 import kotlinx.android.synthetic.main.my_fragment.view.*
 import java.io.File
@@ -156,22 +153,52 @@ class MyFragment : BaseViewModelFragment<MyViewModel>(), View.OnClickListener {
             }
             ll_my_share -> {
                 if (mmkv.decodeBool(Constant.IS_LOGIN, false)) {
-                    startActivity(Intent(activity, ShareActivity::class.java))
+                    startActivity(Intent(activity, MyShareActivity::class.java))
                 } else {
                     startActivity(Intent(activity, LoginActivity::class.java))
                 }
             }
             iv_todo -> {
                 if (mmkv.decodeBool(Constant.IS_LOGIN, false)) {
-
+                    startActivityForResult(
+                        Intent(activity, TodoActivity::class.java),
+                        Constant.FROM_TODO
+                    )
                 } else {
                     startActivity(Intent(activity, LoginActivity::class.java))
                 }
             }
             head_pic -> showPhotoDialog(headType)
             iv_bg_img -> showPhotoDialog(bgType)
+            ll_my_system -> startActivity(Intent(activity, SystemActivity::class.java))
+            ll_my_about -> startActivity(Intent(activity, AboutActivity::class.java))
+            ll_my_laterRead -> startActivity(Intent(activity, LaterReadActivity::class.java))
+            ll_my_readRecord -> startActivity(Intent(activity, ReadRecordActivity::class.java))
             ll_my_logout -> {
-
+                if (mmkv.decodeBool(Constant.IS_LOGIN, false)) {
+                    if (!this::logoutDialog.isInitialized) {
+                        logoutDialog = MyDialog(activity!!)
+                        logoutDialog.run {
+                            setDialogText("是否确认退出登录?")
+                            setClickListener { v ->
+                                when (v.id) {
+                                    R.id.tv_dialog_sure -> {
+                                        if (logoutDialog.isShowing) logoutDialog.dismiss()
+                                        viewModel.logout().observe(this@MyFragment, {
+                                            mmkv.encode(Constant.IS_LOGIN, false)
+                                            LiveEventBus.get(Constant.IS_LOGIN).post(false)
+                                            LiveEventBus.get("myBadge").post(false)
+                                        })
+                                    }
+                                    R.id.tv_dialog_cancle -> {
+                                        if (logoutDialog.isShowing) logoutDialog.dismiss()
+                                    }
+                                }
+                            }
+                            show()
+                        }
+                    } else logoutDialog.show()
+                } else toast("当前未登录!")
             }
         }
     }

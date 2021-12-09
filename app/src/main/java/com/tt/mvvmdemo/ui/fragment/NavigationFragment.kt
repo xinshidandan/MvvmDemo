@@ -25,7 +25,7 @@ class NavigationFragment : BaseViewModelFragment<NavigationViewModel>() {
     private val linearLayoutManager by lazy { LinearLayoutManager(activity) }
     private val navigationAdapter by lazy { NavigationAdapter() }
 
-    override fun providerVMClass(): Class<NavigationViewModel>? = NavigationViewModel::class.java
+    override fun providerVMClass(): Class<NavigationViewModel> = NavigationViewModel::class.java
 
     override fun getLayoutId(): Int = R.layout.navigation_fragment
 

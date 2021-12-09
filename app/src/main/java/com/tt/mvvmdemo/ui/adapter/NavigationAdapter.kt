@@ -29,6 +29,7 @@ class NavigationAdapter :
         item.articles.let {
             for (i in 0 until it.size) {
                 val childTextView = createOrGetCacheFlexItemTextView(fbl)
+                childTextView.text = it[i].title
                 childTextView.setOnClickListener {
                     mOnItemClickListener?.onClick(item.articles[i], i)
                 }
