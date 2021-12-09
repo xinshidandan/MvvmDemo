@@ -27,5 +27,7 @@ object Constant {
     //阅读历史最大存储数
     const val READ_RECORD_MAX_COUNT = 1000
     const val HEAD_PIC_PATH = "image.jpg"
+    const val MY_BG_PIC_PATH = "bgImage"
+
 
 }

@@ -141,7 +141,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:text="本APP由jzh独立开发"
+        android:text="本APP由tt独立开发"
         android:textColor="@color/textColorPrimary"
         android:textSize="@dimen/sp_12" />
 
