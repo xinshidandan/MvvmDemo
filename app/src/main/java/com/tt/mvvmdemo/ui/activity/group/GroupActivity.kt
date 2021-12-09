@@ -12,7 +12,7 @@ import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.viewModel.GroupActivityViewModel
 import com.tt.mvvmdemo.ui.activity.share.ShareActivity
 import com.tt.mvvmdemo.ui.adapter.HomeAdapter
-import com.tt.mvvmdemo.ui.login.LoginActivity
+import com.tt.mvvmdemo.ui.activity.login.LoginActivity
 import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
 import com.tt.mvvmdemo.utils.RvAnimUtils
 import com.tt.mvvmdemo.utils.SettingUtil

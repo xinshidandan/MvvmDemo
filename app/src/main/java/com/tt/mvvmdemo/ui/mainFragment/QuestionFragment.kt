@@ -11,7 +11,7 @@ import com.tt.mvvmdemo.base.BaseViewModelFragment
 import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.mainViewModel.QuestionViewModel
 import com.tt.mvvmdemo.ui.adapter.HomeAdapter
-import com.tt.mvvmdemo.ui.login.LoginActivity
+import com.tt.mvvmdemo.ui.activity.login.LoginActivity
 import com.tt.mvvmdemo.utils.MyMMKV
 import com.tt.mvvmdemo.utils.RvAnimUtils
 import com.tt.mvvmdemo.utils.SettingUtil

@@ -17,7 +17,7 @@ import com.tt.mvvmdemo.base.BaseViewModelActivity
 import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.mainViewModel.HomeViewModel
 import com.tt.mvvmdemo.ui.adapter.HomeAdapter
-import com.tt.mvvmdemo.ui.login.LoginActivity
+import com.tt.mvvmdemo.ui.activity.login.LoginActivity
 import com.tt.mvvmdemo.utils.*
 import com.tt.mvvmdemo.webView.WebViewActivity
 import kotlinx.android.synthetic.main.activity_search.*

@@ -14,8 +14,7 @@ import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.mainViewModel.MyViewModel
 import com.tt.mvvmdemo.ui.activity.collect.MyCollectActivity
 import com.tt.mvvmdemo.ui.activity.my.*
-import com.tt.mvvmdemo.ui.activity.share.ShareActivity
-import com.tt.mvvmdemo.ui.login.LoginActivity
+import com.tt.mvvmdemo.ui.activity.login.LoginActivity
 import com.tt.mvvmdemo.ui.view.BottomDialog
 import com.tt.mvvmdemo.ui.view.MyDialog
 import com.tt.mvvmdemo.utils.*

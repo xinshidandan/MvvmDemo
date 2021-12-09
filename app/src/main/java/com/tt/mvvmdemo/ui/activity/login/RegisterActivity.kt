@@ -1,4 +1,4 @@
-package com.tt.mvvmdemo.ui.login
+package com.tt.mvvmdemo.ui.activity.login
 
 import android.os.Build
 import androidx.annotation.RequiresApi

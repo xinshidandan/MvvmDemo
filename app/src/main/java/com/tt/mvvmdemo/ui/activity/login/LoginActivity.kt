@@ -1,4 +1,4 @@
-package com.tt.mvvmdemo.ui.login
+package com.tt.mvvmdemo.ui.activity.login
 
 import android.content.Intent
 import android.os.Build

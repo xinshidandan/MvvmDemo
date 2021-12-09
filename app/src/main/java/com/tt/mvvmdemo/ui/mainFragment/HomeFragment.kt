@@ -19,7 +19,7 @@ import com.tt.mvvmdemo.httpUtils.Banner
 import com.tt.mvvmdemo.mvvm.mainViewModel.HomeViewModel
 import com.tt.mvvmdemo.ui.adapter.HomeAdapter
 import com.tt.mvvmdemo.ui.adapter.ImageAdapter
-import com.tt.mvvmdemo.ui.login.LoginActivity
+import com.tt.mvvmdemo.ui.activity.login.LoginActivity
 import com.tt.mvvmdemo.utils.DensityUtil
 import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
 import com.tt.mvvmdemo.utils.NetWorkUtil

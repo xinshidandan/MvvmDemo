@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +23,7 @@ import com.tt.mvvmdemo.R
 import com.tt.mvvmdemo.base.BaseViewModelActivity
 import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.viewModel.RoomViewModel
-import com.tt.mvvmdemo.ui.login.LoginActivity
+import com.tt.mvvmdemo.ui.activity.login.LoginActivity
 import com.tt.mvvmdemo.utils.MyMMKV.Companion.mmkv
 import com.tt.mvvmdemo.utils.getAgentWebView
 import com.tt.mvvmdemo.utils.toast

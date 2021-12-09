@@ -12,7 +12,7 @@ import com.tt.mvvmdemo.constant.Constant
 import com.tt.mvvmdemo.mvvm.viewModel.ShareActivityViewModel
 import com.tt.mvvmdemo.ui.activity.share.ShareActivity
 import com.tt.mvvmdemo.ui.adapter.ShareAdapter
-import com.tt.mvvmdemo.ui.login.LoginActivity
+import com.tt.mvvmdemo.ui.activity.login.LoginActivity
 import com.tt.mvvmdemo.ui.view.SwipeItemLayout
 import com.tt.mvvmdemo.utils.MyMMKV
 import com.tt.mvvmdemo.utils.RvAnimUtils
